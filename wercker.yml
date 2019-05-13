@@ -5,6 +5,7 @@
 box: openjdk:8-jdk
 #box: openjdk:11jdk
 
+
 # This is the build pipeline. Pipelines are the core of wercker
 # Read more about pipelines on our dev center
 # https://devcenter.wercker.com/development/pipelines/
