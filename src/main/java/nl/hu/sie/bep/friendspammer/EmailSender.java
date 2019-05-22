@@ -80,14 +80,13 @@ public class EmailSender {
 		props.put("mail.smtp.port", "2525");
 		props.put("mail.smtp.auth", "true");
 
-		Session session = Session.getInstance(props,
+		return Session.getInstance(props,
 				  new javax.mail.Authenticator() {
 					@Override
 					protected PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication(username, password);
 					}
 				  });
-		return session;
 	}
 	
 }
