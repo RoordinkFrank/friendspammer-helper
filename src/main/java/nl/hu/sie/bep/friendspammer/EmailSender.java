@@ -10,7 +10,12 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class EmailSender {
+	
+	private static Logger logger = LoggerFactory.getLogger(EmailSender.class);
 	
 	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) {
 
@@ -44,6 +49,8 @@ public class EmailSender {
 			Transport.send(message);
 
 			MongoSaver.saveEmail(to, "spammer@spamer.com", subject, messageBody, asHtml);
+			
+			
 
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
@@ -83,7 +90,7 @@ public class EmailSender {
 				}
 				Transport.send(message);
 	
-				System.out.println("Done");
+				logger.info("Done");
 			}
 
 		} catch (MessagingException e) {
