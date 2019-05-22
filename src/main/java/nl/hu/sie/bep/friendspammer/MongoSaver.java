@@ -19,18 +19,12 @@ public class MongoSaver {
 	
 	public static boolean saveEmail(String to, String from, String subject, String text, Boolean html) {
 		
-		String userName = "spammer";
-		String password = "hamspam";
 		String database = "friendspammer";
-		
-		@SuppressWarnings("unused")
-		MongoCredential credential = MongoCredential.createCredential(userName, database, password.toCharArray());
 		
 		boolean success = true;
 		
 		MongoClientURI uri = new MongoClientURI("mongodb+srv://opdracht2admin:opdracht2frank@cluster0-725c7.mongodb.net/test?retryWrites=true");
 
-		
 	    
 	    //new ServerAddress("ds227939.mlab.com", 27939), credential, MongoClientOptions.builder().build()
 		try (MongoClient mongoClient = new MongoClient(uri) ) {
@@ -50,7 +44,6 @@ public class MongoSaver {
 			mongoException.printStackTrace();
 			success = false;
 		}
-		
 		return success;
  		
 	}
