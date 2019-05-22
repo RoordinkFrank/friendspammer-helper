@@ -21,11 +21,20 @@ public class EmailSender {
 	
 	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) throws EmailException {
 
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.mailtrap.io");
+		props.put("mail.smtp.port", "2525");
+		props.put("mail.smtp.auth", "true");
 
 		String username = "7a1eaba28156ea";
 		String password = "45e7c5f4925a9d";
-		
-		Session session = createSession(username, password);
+
+		Session session = Session.getInstance(props,
+				  new javax.mail.Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication(username, password);
+					}
+				  });
 		try {
 
 			Message message = new MimeMessage(session);
@@ -50,11 +59,15 @@ public class EmailSender {
 		}
 	}
 
-	private static Session createSession(String username, String password) {
+	public static void sendEmail(String subject, String[] toList, String messageBody, boolean asHtml) throws EmailException {
+
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.mailtrap.io");
 		props.put("mail.smtp.port", "2525");
 		props.put("mail.smtp.auth", "true");
+		
+		String username = "YOUR MAIL USERNAME";
+		String password = "YOUR MAIL PASSWORD";
 
 		Session session = Session.getInstance(props,
 				  new javax.mail.Authenticator() {
@@ -62,15 +75,6 @@ public class EmailSender {
 						return new PasswordAuthentication(username, password);
 					}
 				  });
-		return session;
-	}
-
-	public static void sendEmail(String subject, String[] toList, String messageBody, boolean asHtml) throws EmailException {
-
-		String username = "YOUR MAIL USERNAME";
-		String password = "YOUR MAIL PASSWORD";
-		
-		Session session = createSession(username, password);
 		try {
 
 			for (int index = 0; index < toList.length; index++) {
