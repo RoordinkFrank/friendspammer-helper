@@ -20,12 +20,8 @@ public class EmailSender {
 	private EmailSender() {}
 	
 	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) throws EmailException {
-
-
-		String username = "7a1eaba28156ea";
-		String password = "45e7c5f4925a9d";
 		
-		Session session = createSession(username, password);
+		Session session = createSession("7a1eaba28156ea", "45e7c5f4925a9d");
 		try {
 
 			Message message = new MimeMessage(session);
@@ -68,10 +64,7 @@ public class EmailSender {
 
 	public static void sendEmail(String subject, String[] toList, String messageBody, boolean asHtml) throws EmailException {
 
-		String username = "YOUR MAIL USERNAME";
-		String password = "YOUR MAIL PASSWORD";
-		
-		Session session = createSession(username, password);
+		Session session = createSession("YOUR MAIL USERNAME", "YOUR MAIL PASSWORD");
 		try {
 
 			for (int index = 0; index < toList.length; index++) {
