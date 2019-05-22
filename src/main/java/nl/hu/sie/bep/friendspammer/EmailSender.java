@@ -46,6 +46,22 @@ public class EmailSender {
 		}
 	}
 
+	private static Session createSession(String username, String password) {
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.mailtrap.io");
+		props.put("mail.smtp.port", "2525");
+		props.put("mail.smtp.auth", "true");
+
+		Session session = Session.getInstance(props,
+				  new javax.mail.Authenticator() {
+					@Override
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication(username, password);
+					}
+				  });
+		return session;
+	}
+
 	public static void sendEmail(String subject, String[] toList, String messageBody, boolean asHtml) throws EmailException {
 
 		Session session = createSession("YOUR MAIL USERNAME", "YOUR MAIL PASSWORD");
@@ -71,23 +87,6 @@ public class EmailSender {
 		} catch (MessagingException e) {
 			throw new EmailException(e.getMessage());
 		}
-	}
-	
-
-	private static Session createSession(String username, String password) {
-		Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.mailtrap.io");
-		props.put("mail.smtp.port", "2525");
-		props.put("mail.smtp.auth", "true");
-
-		Session session = Session.getInstance(props,
-				  new javax.mail.Authenticator() {
-					@Override
-					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(username, password);
-					}
-				  });
-		return session;
 	}
 	
 }
