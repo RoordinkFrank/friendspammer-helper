@@ -58,7 +58,6 @@ public class EmailSender {
 
 		Session session = Session.getInstance(props,
 				  new javax.mail.Authenticator() {
-					@Override
 					protected PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication(username, password);
 					}
@@ -88,6 +87,7 @@ public class EmailSender {
 					message.setText(messageBody);	
 				}
 				Transport.send(message);
+	
 				logger.info("Done");
 			}
 
