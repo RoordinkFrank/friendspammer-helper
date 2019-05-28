@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 public class EmailSender {
 	
-	private static Logger logger = LoggerFactory.getLogger(EmailSender.class);
+	//private static Logger logger = LoggerFactory.getLogger(EmailSender.class);
 	
 	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) {
 
@@ -89,8 +89,8 @@ public class EmailSender {
 					message.setText(messageBody);	
 				}
 				Transport.send(message);
-	
-				logger.info("Done");
+				System.out.println("Done");
+				//logger.info("Done");
 			}
 
 		} catch (MessagingException e) {
