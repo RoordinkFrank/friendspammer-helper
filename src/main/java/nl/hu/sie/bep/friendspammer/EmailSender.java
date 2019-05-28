@@ -20,7 +20,7 @@ public class EmailSender {
 	
 	private EmailSender() {}
 	
-	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) {
+	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) throws EmailException {
 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.mailtrap.io");
@@ -57,11 +57,11 @@ public class EmailSender {
 			
 
 		} catch (MessagingException e) {
-			throw new RuntimeException(e);
+			throw new EmailException(e.getMessage());
 		}
 	}
 
-	public static void sendEmail(String subject, String[] toList, String messageBody, boolean asHtml) {
+	public static void sendEmail(String subject, String[] toList, String messageBody, boolean asHtml) throws EmailException {
 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.mailtrap.io");
@@ -99,7 +99,7 @@ public class EmailSender {
 			}
 
 		} catch (MessagingException e) {
-			throw new RuntimeException(e);
+			throw new EmailException(e.getMessage());
 		}
 	}
 	
