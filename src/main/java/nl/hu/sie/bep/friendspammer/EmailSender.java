@@ -17,9 +17,7 @@ public class EmailSender {
 	
 	private static Logger logger = LoggerFactory.getLogger(EmailSender.class);
 	
-	private EmailSender() {}
-	
-	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) throws EmailException {
+	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) {
 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.mailtrap.io");
@@ -55,11 +53,11 @@ public class EmailSender {
 			
 
 		} catch (MessagingException e) {
-			throw new EmailException(e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 
-	public static void sendEmail(String subject, String[] toList, String messageBody, boolean asHtml) throws EmailException {
+	public static void sendEmail(String subject, String[] toList, String messageBody, boolean asHtml) {
 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.mailtrap.io");
@@ -96,7 +94,7 @@ public class EmailSender {
 			}
 
 		} catch (MessagingException e) {
-			throw new EmailException(e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 	
