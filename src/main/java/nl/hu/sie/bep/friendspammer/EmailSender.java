@@ -14,7 +14,6 @@ import javax.mail.internet.MimeMessage;
 //import org.slf4j.LoggerFactory;
 
 public class EmailSender {
-	//.
 	//private static Logger logger = LoggerFactory.getLogger(EmailSender.class);
 	
 	
