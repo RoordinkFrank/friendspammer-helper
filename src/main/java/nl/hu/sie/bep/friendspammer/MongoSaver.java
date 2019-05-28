@@ -1,22 +1,14 @@
 package nl.hu.sie.bep.friendspammer;
 
 
-import java.net.UnknownHostException;
-import java.util.Arrays;
 
 import org.bson.Document;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
-import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoClientURI;
-import com.mongodb.MongoCredential;
 import com.mongodb.MongoException;
-import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -28,14 +20,7 @@ public class MongoSaver {
 	
 	public static boolean saveEmail(String to, String from, String subject, String text, Boolean html) {
 		
-		String userName = "spammer";
-		String password = "hamspam";
 		String database = "friendspammer";
-		
-
-		MongoCredential credential = MongoCredential.createCredential(userName, database, password.toCharArray());
-		
-		//MongoCredential credential = MongoCredential.createCredential(userName, database, password.toCharArray());
 		
 		boolean success = true;
 		
