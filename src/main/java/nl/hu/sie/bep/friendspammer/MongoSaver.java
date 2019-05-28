@@ -5,8 +5,8 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 
 import org.bson.Document;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -22,7 +22,7 @@ import com.mongodb.client.MongoDatabase;
 
 public class MongoSaver {
 	
-	private static Logger logger = LoggerFactory.getLogger(MongoSaver.class);
+	//private static Logger logger = LoggerFactory.getLogger(MongoSaver.class);
 	
 	public static boolean saveEmail(String to, String from, String subject, String text, Boolean html) {
 		
@@ -55,7 +55,7 @@ public class MongoSaver {
 			        .append("asHtml", html);
 			c.insertOne(doc);
 		} catch (MongoException mongoException) {
-			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
+			//logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
 			mongoException.printStackTrace();
 			success = false;
 		}
