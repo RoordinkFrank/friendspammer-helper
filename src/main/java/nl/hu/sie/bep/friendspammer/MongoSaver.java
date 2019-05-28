@@ -24,6 +24,8 @@ public class MongoSaver {
 	
 	//private static Logger logger = LoggerFactory.getLogger(MongoSaver.class);
 	
+	private MongoSaver() {}
+	
 	public static boolean saveEmail(String to, String from, String subject, String text, Boolean html) {
 		
 		String userName = "spammer";

@@ -17,6 +17,9 @@ public class EmailSender {
 	//.
 	//private static Logger logger = LoggerFactory.getLogger(EmailSender.class);
 	
+	
+	private EmailSender() {}
+	
 	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) {
 
 		Properties props = new Properties();
@@ -29,6 +32,7 @@ public class EmailSender {
 
 		Session session = Session.getInstance(props,
 				  new javax.mail.Authenticator() {
+			@Override
 					protected PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication(username, password);
 					}
@@ -69,6 +73,7 @@ public class EmailSender {
 
 		Session session = Session.getInstance(props,
 				  new javax.mail.Authenticator() {
+			@Override
 					protected PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication(username, password);
 					}
